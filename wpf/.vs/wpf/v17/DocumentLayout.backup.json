@@ -1,0 +1,72 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\matth\\source\\repos\\wpf\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B3012C1F-C63E-4307-91DD-6B40A1DDEE1A}|appTest\\appTest.csproj|c:\\users\\matth\\source\\repos\\wpf\\apptest\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3012C1F-C63E-4307-91DD-6B40A1DDEE1A}|appTest\\appTest.csproj|solutionrelative:apptest\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3012C1F-C63E-4307-91DD-6B40A1DDEE1A}|appTest\\appTest.csproj|c:\\users\\matth\\source\\repos\\wpf\\apptest\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B3012C1F-C63E-4307-91DD-6B40A1DDEE1A}|appTest\\appTest.csproj|solutionrelative:apptest\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3012C1F-C63E-4307-91DD-6B40A1DDEE1A}|appTest\\appTest.csproj|c:\\users\\matth\\source\\repos\\wpf\\apptest\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3012C1F-C63E-4307-91DD-6B40A1DDEE1A}|appTest\\appTest.csproj|solutionrelative:apptest\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RelayCommand.cs",
+              "DocumentMoniker": "C:\\Users\\matth\\source\\repos\\wpf\\appTest\\RelayCommand.cs",
+              "RelativeDocumentMoniker": "appTest\\RelayCommand.cs",
+              "ToolTip": "C:\\Users\\matth\\source\\repos\\wpf\\appTest\\RelayCommand.cs",
+              "RelativeToolTip": "appTest\\RelayCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T09:30:42.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\matth\\source\\repos\\wpf\\appTest\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "appTest\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\matth\\source\\repos\\wpf\\appTest\\MainWindow.xaml",
+              "RelativeToolTip": "appTest\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-13T07:39:35.664Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\matth\\source\\repos\\wpf\\appTest\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "appTest\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\matth\\source\\repos\\wpf\\appTest\\MainWindow.xaml.cs",
+              "RelativeToolTip": "appTest\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T07:50:53.674Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

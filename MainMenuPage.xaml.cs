@@ -1,4 +1,5 @@
-﻿using HeroArena.Models;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,21 +11,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
 namespace HeroArena
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
 
-        public MainWindow()
+    public partial class MainMenuPage : Page
+    {
+        public MainMenuPage()
         {
             InitializeComponent();
-            
         }
 
-        
+        private void BtnExit(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

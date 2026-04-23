@@ -8,12 +8,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
+        
         <TextBlock FontSize="20" Margin="20" TextAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"
             Text="{Binding Hero.Name, ElementName=component}"/>
         <TextBlock FontSize="20" Margin="20" TextAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"
             Text="{Binding Hero.Health, ElementName=component}"/>
         <TextBlock FontSize="20" Margin="20" TextAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"
             Text="{Binding Hero.ImageUrl, ElementName=component}"/>
-
+        
     </StackPanel>
 </UserControl>

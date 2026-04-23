@@ -1,0 +1,33 @@
+﻿<Page x:Class="HeroArena.BattlePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HeroArena"
+      xmlns:components="clr-namespace:HeroArena.Components"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="BattlePage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Background="#2f5cb6">
+
+        </Border>
+
+        <Border Grid.Column ="1" Background="#BF2F13">
+
+        </Border>
+
+        <Border Grid.Row="1" Background="#13BF27">
+            <components:HeroCard Hero="{Binding FirstHero}"/>
+        </Border>
+    </Grid>
+</Page>

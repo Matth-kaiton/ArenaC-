@@ -4,15 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HeroArena"
+        xmlns:components="clr-namespace:HeroArena.Components"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <StackPanel>
-        <TextBlock FontSize="20" Margin="20" TextAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"
-               Text="{Binding FisrtHero.Name}"/>
-        <TextBlock FontSize="20" Margin="20" TextAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"
-       Text="{Binding FisrtHero.Health}"/>
-        <TextBlock FontSize="20" Margin="20" TextAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"
-       Text="{Binding FisrtHero.ImageUrl}"/>
-        
-    </StackPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Background="#2f5cb6"/>
+        <Border Grid.Column ="1" Background="#BF2F13"/>
+        <Border Grid.Row="1" Background="#13BF27"/>
+    </Grid>
 </Window>

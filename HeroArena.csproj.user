@@ -23,5 +23,8 @@
     <Compile Update="Views\RegisterPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\SpellsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

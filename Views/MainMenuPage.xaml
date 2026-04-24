@@ -25,6 +25,7 @@
 
             <Button Content="Sorts" Style="{StaticResource ButtonStyle}"
                     FontSize="24" FontWeight="Bold"
+                    Command="{Binding NavigateSpells}"
                     Width="200" Height="50" Margin="10"/>
 
             <Button Content="Player Profile" Style="{StaticResource ButtonStyle}"

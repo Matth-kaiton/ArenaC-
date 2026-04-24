@@ -64,7 +64,7 @@ namespace HeroArena.ViewModels
                     else
                     {
                         MainVM.CurrentUser = user;
-                        _navService.Navigate(new Views.AddPlayerPage());
+                        MainVM.ExecuteNavigation(new AddPlayerPage());
                     }
                 }
                 else

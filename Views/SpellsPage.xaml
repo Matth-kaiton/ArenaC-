@@ -1,0 +1,76 @@
+﻿<local:BasePage x:Class="HeroArena.Views.SpellsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HeroArena.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SpellsPage">
+
+    <Grid Margin="10">
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/images/MainMenuBackground.jpeg" Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Margin="0,0,10,0">
+            <Label Content="Filtrer par Héros :" 
+                   Style="{StaticResource LabelStyle}"
+                   FontWeight="Bold"/>
+            <ComboBox ItemsSource="{Binding AllHeroes}" 
+                  SelectedItem="{Binding SelectedHeroFilter}" 
+                  DisplayMemberPath="Name" 
+                  Margin="0,0,0,10"/>
+
+            <Label Content="Sorts disponibles :" 
+                   Style="{StaticResource LabelStyle}"
+                   FontWeight="Bold"/>
+            <ListBox ItemsSource="{Binding FilteredSpells}" 
+                 SelectedItem="{Binding SelectedSpell}"
+                 Height="400">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" FontSize="14" Padding="5"
+                                   Style="{StaticResource TextBlockStyle}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Content="Retour"
+                    Style="{StaticResource ButtonStyle}"
+                    Command="{Binding NavigateMainMenu}"/>
+        </StackPanel>
+
+        <Border Grid.Column="1" BorderBrush="Gray"
+                Background="#CC000000"
+                BorderThickness="1" CornerRadius="5" Padding="20">
+            <StackPanel>
+                <TextBlock Text="{Binding SelectedSpell.Name}" FontSize="24" FontWeight="Bold" 
+                           Style="{StaticResource TextBlockStyle}"/>
+                <Separator Margin="0,10"/>
+
+                <WrapPanel Margin="0,10">
+                    <TextBlock Text="Dégâts : " 
+                               Style="{StaticResource TextBlockStyle}"
+                               FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedSpell.Damage}" 
+                               Style="{StaticResource TextBlockStyle}"
+                               Foreground="Red" FontWeight="Bold"/>
+                </WrapPanel>
+
+                <TextBlock Text="Description :" 
+                           Style="{StaticResource TextBlockStyle}"
+                           FontWeight="Bold" Margin="0,10,0,5"/>
+                <TextBlock Text="{Binding SelectedSpell.Description}" 
+                       TextWrapping="Wrap" 
+                       FontSize="14"
+                       Style="{StaticResource TextBlockStyle}"
+                       FontStyle="Italic"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</local:BasePage>

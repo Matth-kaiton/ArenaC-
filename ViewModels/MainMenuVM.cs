@@ -2,13 +2,14 @@
 using HeroArena.Commands;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Navigation;
+using HeroArena.Views;
+using HeroArena.Models;
 
 namespace HeroArena.ViewModels
 {
     public class MainMenuVM : BaseVM
     {
-        private string _welcomeText= string.Empty;
+        private string _welcomeText = string.Empty;
         public string WelcomeText
         {
             get => _welcomeText;
@@ -25,6 +26,7 @@ namespace HeroArena.ViewModels
         public ICommand Exit { get; }
         public ICommand DBInit { get; }
         public ICommand NavigateProfile { get; }
+        public ICommand NavigateSpells { get; }
 
 
         public MainMenuVM()
@@ -34,6 +36,7 @@ namespace HeroArena.ViewModels
             Exit = new RelayCommand(CLose);
             DBInit = new RelayCommand(Initialise);
             NavigateProfile = new RelayCommand(GoToProfile);
+            NavigateSpells = new RelayCommand(GoToSpells);
         }
 
 
@@ -46,6 +49,8 @@ namespace HeroArena.ViewModels
         private void Initialise(object parameter)
         {
             ResetDB();
+            CreateHeroesSpells();
+            MessageBox.Show("Base de donnée initialiser");
         }
 
 
@@ -62,11 +67,58 @@ namespace HeroArena.ViewModels
             }
         }
 
+        private void CreateHeroesSpells()
+        {
+            using (var db = new Models.ExerciceHeroContext())
+            {
+
+                var s = new Dictionary<string, Spell>
+                {
+                    ["Strike"] = new Spell { Name = "Strike", Damage = 15, Description = "Vous frapper votre cible et infliger 15 point de dégat" },
+                    ["Heavy"] = new Spell { Name = "Heavy strike", Damage = 30, Description = "Frappe de plein fouet, chances de rater" },
+                    ["Contre"] = new Spell { Name = "Contre", Damage = 20, Description = "Contre la prochaine attaque" },
+                    ["Armee"] = new Spell { Name = "Armé des mort", Damage = 60, Description = "Déchaîne l'armée des parias" },
+                    ["Sprint"] = new Spell { Name = "Sprinteur", Damage = 0, Description = "Jouer 2 tours après cette compétence" },
+                    ["Biere"] = new Spell { Name = "Bierre Naine", Damage = 0, Description = "Soigne de 40 points de vie" },
+                    ["Aigle"] = new Spell { Name = "Yeux de l'aigle", Damage = 0, Description = "Ne rate pas pendant 2 tours, rejouer" },
+                    ["Jambes"] = new Spell { Name = "Jeux de jambes", Damage = 0, Description = "Plus de chances d'esquiver" },
+                    ["Frimer"] = new Spell { Name = "Frimer", Damage = 10, Description = "Fait perdre 10 PV (30 si c'est Gimli)" },
+                    ["PasseraPas"] = new Spell { Name = "Vous ne passerez pas", Damage = 30, Description = "Bloque et inflige 30 dégâts" },
+                    ["Break"] = new Spell { Name = "Break Dance", Damage = 30, Description = "Danse spectaculaire pour distraire" },
+                    ["Celine"] = new Spell { Name = "Céline Dion Reprise", Damage = 80, Description = "Dévastateur par l'émotion" }
+                };
+
+
+                var heroes = new List<Hero>
+                {
+                    new Hero {
+                        Name = "Aragorn", Health = 150, ImageUrl = "aragorn.png",
+                        Spells = new List<Spell> { s["Strike"], s["Heavy"], s["Contre"], s["Armee"] }
+                    },
+                    new Hero {
+                        Name = "Gimli", Health = 180, ImageUrl = "gimli.png",
+                        Spells = new List<Spell> { s["Strike"], s["Heavy"], s["Sprint"], s["Biere"] }
+                    },
+                    new Hero {
+                        Name = "Legolas", Health = 100, ImageUrl = "legolas.png",
+                        Spells = new List<Spell> { s["Strike"], s["Aigle"], s["Jambes"], s["Frimer"] }
+                    },
+                    new Hero {
+                        Name = "Gandalf", Health = 120, ImageUrl = "gandalf.png",
+                        Spells = new List<Spell> { s["Strike"], s["PasseraPas"], s["Break"], s["Celine"] }
+                    }
+                };
+
+                db.Heroes.AddRange(heroes);
+                db.SaveChanges();
+            }
+        }
+
         private void GoToProfile(object parameter)
         {
-            using(var db = new Models.ExerciceHeroContext())
+            using (var db = new Models.ExerciceHeroContext())
             {
-                if(Player != null)
+                if (Player != null)
                 {
                     var login = db.Logins.Find(Player.LoginId);
                     MainVM.ExecuteNavigation(new Views.ProfileSelectionPage());
@@ -76,6 +128,11 @@ namespace HeroArena.ViewModels
                     MessageBox.Show("Le player est pas renseigné");
                 }
             }
+        }
+
+        private void GoToSpells(object parameter)
+        {
+            MainVM.ExecuteNavigation(new SpellsPage());
         }
     }
 }

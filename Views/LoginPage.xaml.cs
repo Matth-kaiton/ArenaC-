@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace HeroArena
+namespace HeroArena.Views
 {
     public partial class LoginPage : Page
     {
@@ -25,8 +25,17 @@ namespace HeroArena
 
                 if (user != null && BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
                 {
-                    MessageBox.Show("tu t'est bien connecté " + user.Username);
-                    NavigationService.Navigate(new MainMenuPage());
+                    MessageBox.Show($"tu t'est bien connecté {user.Username}" );
+
+                    var player = db.Players.FirstOrDefault(p => p.LoginId == user.Id);
+                    if (player != null) 
+                    {
+                        NavigationService.Navigate(new MainMenuPage(player));
+                    }
+                    else
+                    {
+                        NavigationService.Navigate(new AddPlayer(user));
+                    }
                 }
                 else
                 {

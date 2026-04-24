@@ -15,6 +15,17 @@
                 <GradientStop Color="#8B6914" Offset="1.0"/>
             </LinearGradientBrush>
 
+            <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Palatino Linotype, Serif"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Foreground" Value="#F5F5DC"/>
+                <Setter Property="Padding" Value="15,8"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+
             <Style x:Key="ButtonStyle" TargetType="Button">
                 <Setter Property="FontFamily" Value="Palatino Linotype, Serif"/>
                 <Setter Property="FontSize" Value="16"/>

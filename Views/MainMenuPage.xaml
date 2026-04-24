@@ -1,11 +1,10 @@
-﻿<Page x:Class="HeroArena.MainMenuPage"
+﻿<Page x:Class="HeroArena.Views.MainMenuPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:HeroArena"
+      xmlns:local="clr-namespace:HeroArena.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="1280"
       Title="MainMenuPage">
 
     <Grid>
@@ -15,10 +14,16 @@
 
         <StackPanel VerticalAlignment="Center">
             
+            <TextBlock Text="{Binding WelcomeText}" Style="{StaticResource TextBlockStyle}"/>
+
             <Button Content="Jouer" Style="{StaticResource ButtonStyle}"
                     FontSize="24" FontWeight="Bold"
                     Width="200" Height="50" Margin="10"/>
-            
+
+            <Button Content="Sorts" Style="{StaticResource ButtonStyle}"
+                    FontSize="24" FontWeight="Bold"
+                    Width="200" Height="50" Margin="10"/>
+
             <Button Content="Init BDD" Style="{StaticResource ButtonStyle}"
                     FontSize="24" FontWeight="Bold"
                     Width="200" Height="50" Margin="10"/>

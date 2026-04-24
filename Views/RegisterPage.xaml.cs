@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 
 
-namespace HeroArena
+namespace HeroArena.Views
 {
     public partial class RegisterPage : Page
     {

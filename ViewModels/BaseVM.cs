@@ -1,10 +1,12 @@
-﻿using System.ComponentModel;
+﻿using HeroArena.ViewModels;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace HeroArena.Views
+namespace HeroArena.ViewsModels
 {
-    class BaseVM : INotifyPropertyChanged
+    public class BaseVM : INotifyPropertyChanged
     {
+        public MainViewModel MainVM => (App.Current.MainWindow.DataContext as MainViewModel);
 
         public event PropertyChangedEventHandler? PropertyChanged;
 

@@ -1,4 +1,4 @@
-﻿<Page x:Class="HeroArena.Views.AddPlayerPage"
+﻿<local:BasePage x:Class="HeroArena.Views.AddPlayerPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -23,11 +23,12 @@
                        Style="{StaticResource TextBlockStyle}"/>
             <TextBox x:Name="TxtPlayerName" 
                      Margin="10, 20"
-                     FontSize="20"/>
+                     FontSize="20"
+                     Text="{Binding UsernameToAdd, UpdateSourceTrigger=PropertyChanged}"/>
             <Button Content="Valider" 
                     Style="{StaticResource ButtonStyle}"
-                    Click="BtnAddPlayer"/>
+                    Command="{Binding CreateProfilCommand}"/>
 
         </StackPanel>
     </Grid>
-</Page>
+</local:BasePage>

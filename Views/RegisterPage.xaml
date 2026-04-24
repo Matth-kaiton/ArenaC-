@@ -1,4 +1,4 @@
-﻿<Page x:Class="HeroArena.Views.RegisterPage"
+﻿<local:BasePage x:Class="HeroArena.Views.RegisterPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -20,7 +20,7 @@
                     <DropShadowEffect BlurRadius="20" ShadowDepth="2" Opacity="0.4"/>
                 </Border.Effect>
 
-                <StackPanel>
+                <StackPanel x:Name="Form">
                     <materialDesign:PackIcon Kind="ShieldAccount" Width="50" Height="50" 
                                              HorizontalAlignment="Center" Foreground="#673AB7"/>
 
@@ -28,9 +28,9 @@
                                HorizontalAlignment="Center" Margin="0,10,0,30" Foreground="#333"/>
 
                     <TextBlock Text="Login :" FontSize="14"/>
-                    <TextBox x:Name="TxtUsername"
-                             materialDesign:HintAssist.Hint="Nom du Héros"
-                             FontSize="16" Margin="0,0,0,20"/>
+                    <TextBox materialDesign:HintAssist.Hint="Nom du Héros"
+                             FontSize="16" Margin="0,0,0,20"
+                             Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <TextBlock Text="Mot de passe :" FontSize="14"/>
                     <PasswordBox x:Name="TxtPassword"
@@ -43,16 +43,17 @@
                                  FontSize="16" Margin="0,0,0,30"/>
                     
                     <TextBlock Margin="0, 5">
-                        <Hyperlink Click="LoginLink" Foreground="Blue">
+                        <Hyperlink Command="{Binding NavigateLogin}" Foreground="Blue">
                             Vous avec déja un compte ? Connecter vous
                         </Hyperlink>        
                     </TextBlock>
                     
                     <Button Content="Enregisté" 
                             Height="45" Cursor="Hand"
-                            Click="BtnRegister"/>
+                            Command="{Binding RegisterCommand}"
+                            CommandParameter="{Binding ElementName=Form}"/>
                 </StackPanel>
             </Border>
         </Border>
     </Grid>
-</Page>
+</local:BasePage>

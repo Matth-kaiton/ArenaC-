@@ -9,7 +9,7 @@
         Title="MainWindow" Height="720" Width="1280">
     <Grid>
         <Frame x:Name="MainFrame" 
-                   Source="LoginPage.xaml" 
+                   Source="Views/LoginPage.xaml" 
                    NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

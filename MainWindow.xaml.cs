@@ -1,4 +1,6 @@
 ﻿using HeroArena.Models;
+using HeroArena.ViewModels;
+using HeroArena.Views;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,18 +15,20 @@ using System.Windows.Shapes;
 
 namespace HeroArena
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
-
+        public MainViewModel MainVM { get; } = new MainViewModel();
         public MainWindow()
         {
             InitializeComponent();
-            
+            this.DataContext = MainVM;
+
+            MainVM.Navigation = this.MainFrame.NavigationService;
+
+            MainFrame.Navigate(new LoginPage());
+
         }
 
-        
     }
 }

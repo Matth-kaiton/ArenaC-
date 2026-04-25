@@ -10,6 +10,8 @@ namespace HeroArena.ViewModels
         public Login CurrentUser { get; set; }
         public Player CurrentPlayer { get; set; }
 
+        public Hero CurrentHero { get; set; }
+
         public NavigationService Navigation { get; set; }
 
         public void ExecuteNavigation(Page nextPage)

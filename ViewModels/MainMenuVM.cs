@@ -28,6 +28,8 @@ namespace HeroArena.ViewModels
         public ICommand NavigateProfile { get; }
         public ICommand NavigateSpells { get; }
 
+        public ICommand NavigatePlay { get; }
+
 
         public MainMenuVM()
         {
@@ -37,6 +39,7 @@ namespace HeroArena.ViewModels
             DBInit = new RelayCommand(Initialise);
             NavigateProfile = new RelayCommand(GoToProfile);
             NavigateSpells = new RelayCommand(GoToSpells);
+            NavigatePlay = new RelayCommand(GoToHeroSelection);
         }
 
 
@@ -133,6 +136,11 @@ namespace HeroArena.ViewModels
         private void GoToSpells(object parameter)
         {
             MainVM.ExecuteNavigation(new SpellsPage());
+        }
+
+        private void GoToHeroSelection(object parameter)
+        {
+            MainVM.ExecuteNavigation(new HeroSelectionPage());
         }
     }
 }

@@ -4,7 +4,7 @@ using HeroArena.Views;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using CommunityToolkit.Mvvm.Input;
+using HeroArena.Commands;
 
 namespace HeroArena.ViewModels
 {
@@ -18,13 +18,9 @@ namespace HeroArena.ViewModels
         public Hero SelectedHeroFilter
         {
             get => _selectedHeroFilter;
-            set
-            {
-                if (SetProperty(ref _selectedHeroFilter, value))
-                {
-                    OnPropertyChanged(nameof(FilteredSpells));
-                }
-            }
+            set => SetProperty(ref _selectedHeroFilter, value);
+   
+            
         }
 
 
@@ -53,7 +49,7 @@ namespace HeroArena.ViewModels
         {
 
             NavigateMainMenu = new RelayCommand(GoToMainMenu);
-            using (var db = new Models.ExerciceHeroContext())
+            using (var db = new ExerciceHeroContext())
             {
 
                 _allSpellsDatabase = db.Spells.ToList();
@@ -70,7 +66,7 @@ namespace HeroArena.ViewModels
             }
         }
 
-        private void GoToMainMenu()
+        private void GoToMainMenu(object parameter)
         {
             MainVM.ExecuteNavigation(new MainMenuPage());
         }

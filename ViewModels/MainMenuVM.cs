@@ -66,7 +66,6 @@ namespace HeroArena.ViewModels
 
                 var allSpells = db.Spells.ToList();
                 db.Spells.RemoveRange(allSpells);
-                db.SaveChanges();
             }
         }
 

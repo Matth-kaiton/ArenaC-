@@ -1,32 +1,44 @@
-﻿<Page x:Class="HeroArena.Views.BattlePage"
+﻿<local:BasePage x:Class="HeroArena.Views.BattlePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HeroArena.Views"
-      xmlns:components="clr-namespace:HeroArena.Components"
-      mc:Ignorable="d" 
-      Title="BattlePage">
+      Title="Combat">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Border Background="#2f5cb6">
+    <Grid Margin="30">
+        <StackPanel>
+            <TextBlock Text="{Binding Score, StringFormat='Ennemis vaincus : {0}'}" 
+                       FontSize="28" HorizontalAlignment="Center" Margin="0,0,0,30"/>
 
-        </Border>
+            <TextBlock Text="{Binding EnemyHero.Name}" FontSize="18" FontWeight="Bold"/>
+            <ProgressBar Value="{Binding CurrentEnemyHealth}" 
+                         Maximum="{Binding EnemyHero.Health}" 
+                         Height="30" Foreground="Red" Margin="0,5,0,30"/>
 
-        <Border Grid.Column ="1" Background="#BF2F13">
+            <TextBlock Text="{Binding PlayerHero.Name}" FontSize="18" FontWeight="Bold"/>
+            <ProgressBar Value="{Binding PlayerHero.Health}" 
+                         Maximum="{Binding PlayerHero.Health}" 
+                         Height="30" Foreground="Green" Margin="0,5,0,10"/>
 
-        </Border>
+            <ItemsControl ItemsSource="{Binding PlayerHero.Spells}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="2"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding Name}" 
+                                Command="{Binding DataContext.AttackCommand, RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                CommandParameter="{Binding}"
+                                Height="50" Margin="5"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
 
-        <Border Grid.Row="1" Background="#13BF27">
-            <components:HeroCard Hero="{Binding FirstHero}"/>
-        </Border>
+            <Button Content="COMBAT SUIVANT" 
+                    Command="{Binding RestartCommand}"
+                    Visibility="{Binding CanRestart, Converter={StaticResource BoolToVis}}"
+                    Height="60" Background="Gold" FontWeight="ExtraBold" Margin="0,20,0,0"/>
+        </StackPanel>
     </Grid>
-</Page>
+</local:BasePage>

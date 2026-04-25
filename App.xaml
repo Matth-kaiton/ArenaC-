@@ -5,6 +5,8 @@
              xmlns:local="clr-namespace:HeroArena"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        
+        
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="DeepPurple" SecondaryColor="Lime" />
@@ -14,6 +16,9 @@
                 <GradientStop Color="#D4AF37" Offset="0.0"/>
                 <GradientStop Color="#8B6914" Offset="1.0"/>
             </LinearGradientBrush>
+            
+            <BooleanToVisibilityConverter x:Key="BoolToVis" />
+
 
             <Style x:Key="TextBlockStyle" TargetType="TextBlock">
                 <Setter Property="FontFamily" Value="Palatino Linotype, Serif"/>

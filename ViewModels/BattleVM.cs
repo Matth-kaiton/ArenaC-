@@ -3,6 +3,7 @@ using HeroArena.Models;
 using HeroArena.ViewsModels;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace HeroArena.ViewModels
@@ -11,12 +12,14 @@ namespace HeroArena.ViewModels
     {
         private Hero _playerHero;
         private Hero _enemyHero;
+        private int _currentPlayerHealth;
         private int _currentEnemyHealth;
         private int _score;
         private bool _canRestart;
 
         public Hero PlayerHero { get => _playerHero; set => SetProperty(ref _playerHero, value); }
         public Hero EnemyHero { get => _enemyHero; set => SetProperty(ref _enemyHero, value); }
+        public int CurrentPlayerHealth { get => _currentPlayerHealth; set => SetProperty(ref _currentPlayerHealth, value); }
 
         public int CurrentEnemyHealth { get => _currentEnemyHealth; set => SetProperty(ref _currentEnemyHealth, value); }
 
@@ -29,6 +32,7 @@ namespace HeroArena.ViewModels
         public BattleVM()
         {
             PlayerHero = MainVM.CurrentHero;
+            CurrentPlayerHealth = PlayerHero.Health;
             Score = 0;
             GenerateEnemy(true);
 
@@ -48,6 +52,26 @@ namespace HeroArena.ViewModels
                 CurrentEnemyHealth = 0;
                 Score++; 
                 CanRestart = true; 
+            }
+            else
+            {
+                MonsterTurn();
+            }
+        }
+
+        private void MonsterTurn()
+        {
+            var monsterSpell = EnemyHero.Spells.FirstOrDefault();
+
+            if (monsterSpell != null)
+            {
+                CurrentPlayerHealth -= monsterSpell.Damage;
+
+                if (CurrentPlayerHealth <= 0)
+                {
+                    CurrentPlayerHealth = 0;
+                    MessageBox.Show("Vous avez été vaincu !", "Défaite", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 

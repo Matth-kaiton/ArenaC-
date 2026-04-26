@@ -8,9 +8,6 @@
     <Compile Update="Views\BattlePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Components\HeroCard.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\GameOverPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

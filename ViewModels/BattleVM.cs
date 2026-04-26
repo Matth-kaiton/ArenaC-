@@ -1,7 +1,7 @@
 ﻿using HeroArena.Commands;
 using HeroArena.Models;
 using HeroArena.ViewsModels;
-using System.Collections.ObjectModel;
+using HeroArena.Views;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -70,7 +70,7 @@ namespace HeroArena.ViewModels
                 if (CurrentPlayerHealth <= 0)
                 {
                     CurrentPlayerHealth = 0;
-                    MessageBox.Show("Vous avez été vaincu !", "Défaite", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MainVM.ExecuteNavigation(new GameOverPage());
                 }
             }
         }
@@ -87,9 +87,10 @@ namespace HeroArena.ViewModels
 
                 EnemyHero = new Hero
                 {
-                    Name = "Gbelin",
+                    Name = "Gobelin",
                     Health = 100,
-                    Spells = PlayerHero.Spells 
+                    Spells = PlayerHero.Spells,
+                    ImageUrl = "images/gobelin.png"
                 };
             }
             else

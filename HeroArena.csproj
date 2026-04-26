@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\aragorn.jpg" />
+    <None Remove="images\gandalf.png" />
+    <None Remove="images\gimli.jpg" />
+    <None Remove="images\legolas.png" />
     <None Remove="images\MainMenuBackground.jpeg" />
   </ItemGroup>
 
@@ -29,6 +33,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="images\aragorn.jpg" />
+    <Resource Include="images\gandalf.png" />
+    <Resource Include="images\gimli.jpg" />
+    <Resource Include="images\gobelin.png" />
+    <Resource Include="images\legolas.png" />
     <Resource Include="images\MainMenuBackground.jpeg" />
   </ItemGroup>
 

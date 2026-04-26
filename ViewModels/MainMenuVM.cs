@@ -1,9 +1,10 @@
-﻿using HeroArena.ViewsModels;
-using HeroArena.Commands;
+﻿using HeroArena.Commands;
+using HeroArena.Models;
+using HeroArena.Views;
+using HeroArena.ViewsModels;
+using Microsoft.EntityFrameworkCore;
 using System.Windows;
 using System.Windows.Input;
-using HeroArena.Views;
-using HeroArena.Models;
 
 namespace HeroArena.ViewModels
 {
@@ -61,11 +62,27 @@ namespace HeroArena.ViewModels
         {
             using (var db = new Models.ExerciceHeroContext())
             {
-                var allHeroes = db.Heroes.ToList();
-                db.Heroes.RemoveRange(allHeroes);
+                var allHeroes = db.Heroes
+                                .Include(h => h.Spells)
+                                .Include(h => h.Players)
+                                .ToList();
 
                 var allSpells = db.Spells.ToList();
+
+                foreach (var hero in allHeroes)
+                {
+
+                    hero.Spells.Clear();
+                    hero.Players.Clear();
+                }
+
+
+                db.SaveChanges();
+
                 db.Spells.RemoveRange(allSpells);
+                db.Heroes.RemoveRange(allHeroes);
+
+                db.SaveChanges();
             }
         }
 
@@ -94,19 +111,19 @@ namespace HeroArena.ViewModels
                 var heroes = new List<Hero>
                 {
                     new Hero {
-                        Name = "Aragorn", Health = 150, ImageUrl = "aragorn.png",
+                        Name = "Aragorn", Health = 150, ImageUrl = "/images/aragorn.jpg",
                         Spells = new List<Spell> { s["Strike"], s["Heavy"], s["Contre"], s["Armee"] }
                     },
                     new Hero {
-                        Name = "Gimli", Health = 180, ImageUrl = "gimli.png",
+                        Name = "Gimli", Health = 180, ImageUrl = "images/gimli.jpg",
                         Spells = new List<Spell> { s["Strike"], s["Heavy"], s["Sprint"], s["Biere"] }
                     },
                     new Hero {
-                        Name = "Legolas", Health = 100, ImageUrl = "legolas.png",
+                        Name = "Legolas", Health = 100, ImageUrl = "images/legolas.png",
                         Spells = new List<Spell> { s["Strike"], s["Aigle"], s["Jambes"], s["Frimer"] }
                     },
                     new Hero {
-                        Name = "Gandalf", Health = 120, ImageUrl = "gandalf.png",
+                        Name = "Gandalf", Health = 120, ImageUrl = "images/gandalf.png",
                         Spells = new List<Spell> { s["Strike"], s["PasseraPas"], s["Break"], s["Celine"] }
                     }
                 };
